@@ -12,5 +12,4 @@ function ClientModel({ data }) {
     );
   }
   
-
 export default ClientModel;
