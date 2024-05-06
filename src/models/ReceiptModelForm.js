@@ -1,5 +1,6 @@
 import React, { useState} from 'react';
 import { apiPost } from '../services/apiPost';
+import '../styles/ReceiptModelForm.css'
 
 function ReceiptModelForm({ data, onSubmitSuccess, mode, id }) {
     const [formData, setFormData] = useState(data || {});

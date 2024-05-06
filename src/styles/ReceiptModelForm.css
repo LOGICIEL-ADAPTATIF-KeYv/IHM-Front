@@ -1,0 +1,34 @@
+.ReceiptModelForm p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.ReceiptModelForm label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.ReceiptModelForm input {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 13px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.ReceiptModelForm button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.ReceiptModelForm button[type="submit"]:hover {
+    background-color: #0056b3;
+}

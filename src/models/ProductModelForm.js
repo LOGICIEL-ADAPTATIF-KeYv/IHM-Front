@@ -1,5 +1,6 @@
 import React, { useState} from 'react';
 import { apiPost } from '../services/apiPost';
+import '../styles/ProductModelForm.css'
 
 function ProductModelForm({ data, onSubmitSuccess, mode, id }) {
     const [formData, setFormData] = useState(data || {});
@@ -34,6 +35,7 @@ function ProductModelForm({ data, onSubmitSuccess, mode, id }) {
     return (
         <div className="ProductModelForm">
             <form onSubmit={handleSubmit}>
+                <p>Création d'un nouveau produit</p>
                 <div>
                     <label htmlFor="name">Nom du produit</label>
                     <input type="text" id="name" defaultValue={data?.name || ''} onChange={handleChange}/>
