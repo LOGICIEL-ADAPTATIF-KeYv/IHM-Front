@@ -1,21 +1,29 @@
 import React, { useState} from 'react';
 import { apiPost } from '../services/apiPost';
 
-function ProductModelForm({ data, onSubmitSuccess }) {
+function ProductModelForm({ data, onSubmitSuccess, mode, id }) {
     const [formData, setFormData] = useState(data || {});
 
     const handleChange = (e) => {
         const { id, value } = e.target;
-        setFormData((prevData) => ({
-            ...prevData,
-            [id]: value
-        }));
+        if (id === 'invoices') {
+            const invoicesIds = value.split(',').map(id => id.trim());
+            setFormData(prevData => ({
+                ...prevData,
+                invoices: invoicesIds
+            }));
+        } else {
+            setFormData((prevData) => ({
+                ...prevData,
+                [id]: value
+            }));
+        }
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const createdModel = await apiPost('product', formData); 
+            const createdModel = await apiPost(id, formData, mode); 
             console.log('Produit créé avec succès:', createdModel);
             onSubmitSuccess();
         } catch (error) {
@@ -44,9 +52,9 @@ function ProductModelForm({ data, onSubmitSuccess }) {
                 </div>
                 <div>
                     <label htmlFor="invoices">Factures</label>
-                    <input type="text" id="invoices" defaultValue={(data?.invoices && data.invoices.join(", ")) || ''} onChange={handleChange}/>
+                    <input type="text" id="invoices" value={(Array.isArray(formData.invoices) && formData.invoices.join(', ')) || ''} onChange={handleChange}/>
                 </div>
-                <button type="submit">Submit</button>
+                <button type="submit">Valider</button>
             </form>
         </div>
     );

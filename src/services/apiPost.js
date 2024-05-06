@@ -1,9 +1,9 @@
-const apiPost = async (model, data) => {
+const apiPost = async (model, data, mode) => {
     try {
         const apiUrl = `http://localhost:3000/${model}`;
         console.log(data);
         const response = await fetch(apiUrl, {
-            method: 'POST',
+            method: mode,
             headers: {
                 'Content-Type': 'application/json'
             },

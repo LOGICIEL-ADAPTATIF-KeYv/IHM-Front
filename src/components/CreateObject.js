@@ -20,7 +20,7 @@ function CreateObject({ model, refreshData }) {
     return (
         <div className='container-createObject' onClick={handleOpenModal}>
             <AddIcon/>
-            <CreateObjectWindow isOpen={modalOpen} onClose={handleCloseModal} model={model} refreshData={refreshData}/>
+            <CreateObjectWindow isOpen={modalOpen} onClose={handleCloseModal} model={model} refreshData={refreshData} mode="POST" id={model}/>
         </div>
     );
 }

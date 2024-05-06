@@ -1,7 +1,7 @@
 import React, { useState} from 'react';
 import { apiPost } from '../services/apiPost';
 
-function ReceiptModelForm({ data, onSubmitSuccess }) {
+function ReceiptModelForm({ data, onSubmitSuccess, mode, id }) {
     const [formData, setFormData] = useState(data || {});
 
     const handleChange = (e) => {
@@ -23,7 +23,7 @@ function ReceiptModelForm({ data, onSubmitSuccess }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const createdModel = await apiPost('receipt', formData); 
+            const createdModel = await apiPost(id, formData, mode); 
             console.log('Model créé avec succès:', createdModel);
             onSubmitSuccess();
         } catch (error) {
@@ -54,7 +54,7 @@ function ReceiptModelForm({ data, onSubmitSuccess }) {
                     <label htmlFor="products">Produits (séparés par des virgules)</label>
                     <input type="text" id="products" value={(Array.isArray(formData.products) && formData.products.join(', ')) || ''} onChange={handleChange} />
                 </div>
-                <button type="submit">Submit</button>
+                <button type="submit">Valider</button>
             </form>
         </div>
     );
